@@ -1,2 +1,2 @@
-# technical-documentation-page
-A technical documentation page
+# Technical Documentation Page
+A technical documentation page documenting some programming languages.
