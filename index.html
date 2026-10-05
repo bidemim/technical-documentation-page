@@ -100,28 +100,36 @@
                 Standard Library reference. In general, the Unicode versions match any character that’s in the appropriate 
                 category in the Unicode database.</p>
 
-            <code class="code">\d</code>
-            <p>Matches any decimal digit; this is equivalent to the class [0-9].</p>
-            
-            <code class="code">\D</code>
-            <p>Matches any non-digit character; this is equivalent to the class [^0-9].</p>
-            
-            <code class="code">\s</code>
-            <p>Matches any whitespace character; this is equivalent to the class [ \t\n\r\f\v].</p>
-
-            <code class="code">\S</code>
-            <p>Matches any non-whitespace character; this is equivalent to the class [^ \t\n\r\f\v].</p>
-            
-            <code class="code">\w</code>
-            <p>Matches any alphanumeric character; this is equivalent to the class [a-zA-Z0-9_].</p>
-            
-            <code class="code">\W</code>
-            <p>Matches any non-alphanumeric character; this is equivalent to the class [^a-zA-Z0-9_].</p>
+            <ul>
+                <li>
+                    <code class="code">\d</code>
+                    <p>Matches any decimal digit; this is equivalent to the class [0-9].</p>
+                </li>  
+                <li> 
+                    <code class="code">\D</code>
+                    <p>Matches any non-digit character; this is equivalent to the class [^0-9].</p>
+                </li>
+                <li>   
+                    <code class="code">\s</code>
+                    <p>Matches any whitespace character; this is equivalent to the class [ \t\n\r\f\v].</p>
+                </li>
+                    <code class="code">\S</code>
+                    <p>Matches any non-whitespace character; this is equivalent to the class [^ \t\n\r\f\v].</p>
+                </li>
+                <li>    
+                    <code class="code">\w</code>
+                    <p>Matches any alphanumeric character; this is equivalent to the class [a-zA-Z0-9_].</p>
+                </li>  
+                <li>  
+                    <code class="code">\W</code>
+                    <p>Matches any non-alphanumeric character; this is equivalent to the class [^a-zA-Z0-9_].</p>
+                </li>
+            </ul>
 
             <p>These sequences can be included inside a character class. For example, [\s,.] is a character class that will 
-            match any whitespace character, or <span class="code">','</span> or <span class="code">'.'.</span></p>
+            match any whitespace character, or <span class="code">','</span> or <span class="code">'.'</span>.</p>
 
-            <p>The final metacharacter in this section is .. It matches anything except a newline character, and there’s an
+            <p>The final metacharacter in this section is <span class="code">.</span>. It matches anything except a newline character, and there’s an
              alternate mode (re.DOTALL) where it will match even a newline. . is often used where you want to match “any 
              character”.</p>
         </section>
