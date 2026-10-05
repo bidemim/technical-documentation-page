@@ -146,78 +146,67 @@
             <p>A step-by-step example will make this more obvious. Let’s consider the expression a[bcd]*b. This matches the letter 
                 'a', zero or more letters from the class [bcd], and finally ends with a 'b'. Now imagine matching this RE against 
                 the string 'abcbd'.</p>
+            
             <table>
-                            Step
-	
+                <thead>
+                    <tr>
+                        <th scope="col">Step</th>
+                        <th scope="col">Matched</th>
+                        <th scope="col">Explanation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>a</td>
+                        <td>The a in the RE matches.</td>
+                    </tr>
 
-Matched
-	
+                     <tr>
+                        <th scope="row">2</th>
+                        <td>abcbd</td>
+                        <td>The engine matches [bcd]*, going as far as it can, which is to the end of the string.</td>
+                    </tr> 
 
-Explanation
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Failure</td>
+                        <td>The engine tries to match b, but the current position is at the end of the string, so it fails.</td>
+                    </tr> 
+                    
+                    <tr>
+                        <th scope="row">4</th>
+                        <td>abcb</td>
+                        <td>Back up, so that [bcd]* matches one less character.</td>
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row">5</th>
+                        <td>Failure</td>
+                        <td>Try b again, but the current position is at the last character, which is a 'd'.</td>
+                    </tr> 
+                    
+                    <tr>
+                        <th scope="row">6</th>
+                        <td>abc</td>
+                        <td>Back up again, so that [bcd]* is only matching bc.</td>
+                    </tr> 
+                    
+                    <tr>
+                        <th scope="row">7</th>
+                        <td>abcb</td>
+                        <td>Try b again. This time the character at the current position is 'b', so it succeeds.</td>
+                    </tr>
+                </tbody>
 
-1
-	
-
-a
-	
-
-The a in the RE matches.
-
-2
-	
-
-abcbd
-	
-
-The engine matches [bcd]*, going as far as it can, which is to the end of the string.
-
-3
-	
-
-Failure
-	
-
-The engine tries to match b, but the current position is at the end of the string, so it fails.
-
-4
-	
-
-abcb
-	
-
-Back up, so that [bcd]* matches one less character.
-
-5
-	
-
-Failure
-	
-
-Try b again, but the current position is at the last character, which is a 'd'.
-
-6
-	
-
-abc
-	
-
-Back up again, so that [bcd]* is only matching bc.
-
-7
-	
-
-abcb
-	
-
-Try b again. This time the character at the current position is 'b', so it succeeds.
             </table>
 
 
-    <p>The end of the RE has now been reached, and it has matched 'abcb'. This demonstrates 
-        how the matching engine goes as far as it can at first, and if no match is found it 
-        will then progressively back up and retry the rest of the RE again and again. It will 
-        back up until it has tried zero matches for [bcd]*, and if that subsequently fails, 
-        the engine will conclude that the string doesn’t match the RE at all.</p>
+            <p>The end of the RE has now been reached, and it has matched 'abcb'. This demonstrates 
+            how the matching engine goes as far as it can at first, and if no match is found it 
+            will then progressively back up and retry the rest of the RE again and again. It will 
+            back up until it has tried zero matches for [bcd]*, and if that subsequently fails, 
+            the engine will conclude that the string doesn’t match the RE at all.</p>
 
 Another repeating metacharacter is +, which matches one or more times. Pay careful attention to the difference between * and +; * matches zero or more times, so whatever’s being repeated may not be present at all, while + requires at least one occurrence. To use a similar example, ca+t will match 'cat' (1 'a'), 'caaat' (3 'a's), but won’t match 'ct'.
 
