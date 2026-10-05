@@ -7,18 +7,20 @@
 </head>
 <body>
     <nav id="navbar">
-        <header>Regular expression HOWTO</header>
+        <header>
+            <h1>Regular expression HOWTO</h1></header>
         <a href="#Introduction" class="nav-link">Introduction</a>
         <a href="#Simple_patterns" class="nav-link">Simple patterns</a>
         <a href="#Matching_characters" class="nav-link">Matching characters</a>
         <a href="#Repeating_things" class="nav-link">Repeating things</a>
         <a href="#Reference" class="nav-link">Reference</a>
-
     </nav>
 
     <main id="main-doc">
         <section class="main-section" id="Introduction">
-            <header>Introduction</header>
+            <header>
+                <h2>Introduction</h2>
+            </header>
             <p>Regular expressions (called REs, or regexes, or regex patterns) are essentially
                 a tiny, highly specialized programming language embedded inside Python and made 
                 available through the re module. Using this little language, you specify the rules 
@@ -44,7 +46,9 @@
         </section>
 
         <section class="main-section" id="Simple_patterns">
-            <header>Simple patterns</header>
+            <header>
+                <h2>Simple patterns</h2>
+            </header>
             <p>We’ll start by learning about the simplest possible regular expressions. Since 
                 regular expressions are used to operate on strings, we’ll begin with the most 
                 common task: matching characters.</p>
@@ -55,7 +59,9 @@
         </section>
 
         <section class="main-section" id="Matching_characters">
-            <header>Matching characters</header>
+            <header>
+                <h2>Matching characters</h2>
+            </header>
             <p>Most letters and characters will simply match themselves. For example, the regular 
                 expression test will match the string test exactly. (You can enable a case-insensitive 
                 mode that would let this RE match Test or TEST as well; more about this later.)</p>
@@ -141,7 +147,9 @@
         </section>
 
         <section class="main-section" id="Repeating_things">
-            <header>Repeating things</header>
+            <header>
+                <h2>Repeating things</h2>
+            </header>
             <p>
             Being able to match varying sets of characters is the first thing regular expressions can do that isn’t already 
             possible with the methods available on strings. However, if that was the only additional capability of regexes, 
@@ -247,7 +255,8 @@
         </section>
 
         <section class="main-section" id="Reference">
-            <header>Reference</header>
+            <header>
+                <h2>Reference</h2></header>
             <p>
                 <ul>
                     <li>All the documentation in this page is taken from <a href="https://docs.python.org/3/howto/regex.html#regex-howto">
