@@ -61,7 +61,7 @@
                 metacharacters and what they do.</p>
 
             <p>Here’s a complete list of the metacharacters; their meanings will be discussed in the rest of this HOWTO.</p>
-            <code>. ^ $ * + ? { } [ ] \ | ( )</code>
+            <code class="code">. ^ $ * + ? { } [ ] \ | ( )</code>
             
             <p>The first metacharacters we’ll look at are [ and ]. They’re used for specifying a character 
                 class, which is a set of characters that you wish to match. Characters can be listed 
@@ -201,7 +201,6 @@
 
             </table>
 
-
             <p>The end of the RE has now been reached, and it has matched 'abcb'. This demonstrates 
                 how the matching engine goes as far as it can at first, and if no match is found it 
                 will then progressively back up and retry the rest of the RE again and again. It will 
@@ -233,8 +232,14 @@
                 simply because they’re shorter and easier to read.</p>
         </section>
 
-        <section class="main-section">
-            <header></header>
+        <section class="main-section" id="Reference">
+            <header>Reference</header>
+            <p>
+                <ul>
+                    <li>All the documentation in this page is taken from <a href="https://docs.python.org/3/howto/regex.html#regex-howto">
+                    Python HOWTOs</a></li>
+                </ul> 
+            </p>
         </section>
 
     </main>
