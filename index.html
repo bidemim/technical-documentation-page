@@ -100,38 +100,142 @@
                 Standard Library reference. In general, the Unicode versions match any character that’s in the appropriate 
                 category in the Unicode database.</p>
 
-            <code>\d</code>
+            <code class="code">\d</code>
             <p>Matches any decimal digit; this is equivalent to the class [0-9].</p>
             
-            <code>\D</code>
+            <code class="code">\D</code>
             <p>Matches any non-digit character; this is equivalent to the class [^0-9].</p>
             
-            <code>\s</code>
+            <code class="code">\s</code>
             <p>Matches any whitespace character; this is equivalent to the class [ \t\n\r\f\v].</p>
 
-            <code>\S</code>
+            <code class="code">\S</code>
             <p>Matches any non-whitespace character; this is equivalent to the class [^ \t\n\r\f\v].</p>
             
-            <code>\w</code>
+            <code class="code">\w</code>
             <p>Matches any alphanumeric character; this is equivalent to the class [a-zA-Z0-9_].</p>
             
-            <code>\W</code>
+            <code class="code">\W</code>
             <p>Matches any non-alphanumeric character; this is equivalent to the class [^a-zA-Z0-9_].</p>
 
             <p>These sequences can be included inside a character class. For example, [\s,.] is a character class that will 
-            match any whitespace character, or ',' or '.'.</p>
+            match any whitespace character, or <span class="code">','</span> or <span class="code">'.'.</span></p>
 
             <p>The final metacharacter in this section is .. It matches anything except a newline character, and there’s an
              alternate mode (re.DOTALL) where it will match even a newline. . is often used where you want to match “any 
              character”.</p>
+        </section>
+
+        <section class="main-section" id="Repeating_things">
+            <header>Repeating things</header>
+            <p>
+            Being able to match varying sets of characters is the first thing regular expressions can do that isn’t already 
+            possible with the methods available on strings. However, if that was the only additional capability of regexes, 
+            they wouldn’t be much of an advance. Another capability is that you can specify that portions of the RE must 
+            be repeated a certain number of times.</p>
+
+            <p>The first metacharacter for repeating things that we’ll look at is *. * doesn’t match the literal character '*'; 
+            instead, it specifies that the previous character can be matched zero or more times, instead of exactly once.</p>
             
+            <p>For example, ca*t will match 'ct' (0 'a' characters), 'cat' (1 'a'), 'caaat' (3 'a' characters), and so forth.</p> 
+            
+            <p>Repetitions such as * are greedy; when repeating a RE, the matching engine will try to repeat it as many 
+                times as possible. If later portions of the pattern don’t match, the matching engine will then back up 
+                and try again with fewer repetitions.</p>
+             
+            <p>A step-by-step example will make this more obvious. Let’s consider the expression a[bcd]*b. This matches the letter 
+                'a', zero or more letters from the class [bcd], and finally ends with a 'b'. Now imagine matching this RE against 
+                the string 'abcbd'.</p>
+            <table>
+                            Step
+	
+
+Matched
+	
+
+Explanation
+
+1
+	
+
+a
+	
+
+The a in the RE matches.
+
+2
+	
+
+abcbd
+	
+
+The engine matches [bcd]*, going as far as it can, which is to the end of the string.
+
+3
+	
+
+Failure
+	
+
+The engine tries to match b, but the current position is at the end of the string, so it fails.
+
+4
+	
+
+abcb
+	
+
+Back up, so that [bcd]* matches one less character.
+
+5
+	
+
+Failure
+	
+
+Try b again, but the current position is at the last character, which is a 'd'.
+
+6
+	
+
+abc
+	
+
+Back up again, so that [bcd]* is only matching bc.
+
+7
+	
+
+abcb
+	
+
+Try b again. This time the character at the current position is 'b', so it succeeds.
+            </table>
+
+
+    <p>The end of the RE has now been reached, and it has matched 'abcb'. This demonstrates 
+        how the matching engine goes as far as it can at first, and if no match is found it 
+        will then progressively back up and retry the rest of the RE again and again. It will 
+        back up until it has tried zero matches for [bcd]*, and if that subsequently fails, 
+        the engine will conclude that the string doesn’t match the RE at all.</p>
+
+Another repeating metacharacter is +, which matches one or more times. Pay careful attention to the difference between * and +; * matches zero or more times, so whatever’s being repeated may not be present at all, while + requires at least one occurrence. To use a similar example, ca+t will match 'cat' (1 'a'), 'caaat' (3 'a's), but won’t match 'ct'.
+
+There are two more repeating operators or quantifiers. The question mark character, ?, matches either once or zero times; you can think of it as marking something as being optional. For example, home-?brew matches either 'homebrew' or 'home-brew'.
+
+The most complicated quantifier is {m,n}, where m and n are decimal integers. This quantifier means there must be at least m repetitions, and at most n. For example, a/{1,3}b will match 'a/b', 'a//b', and 'a///b'. It won’t match 'ab', which has no slashes, or 'a////b', which has four.
+
+You can omit either m or n; in that case, a reasonable value is assumed for the missing value. Omitting m is interpreted as a lower limit of 0, while omitting n results in an upper bound of infinity.
+
+The simplest case {m} matches the preceding item exactly m times. For example, a/{2}b will only match 'a//b'.
+
+Readers of a reductionist bent may notice that the three other quantifiers can all be expressed using this notation. {0,} is the same as *, {1,} is equivalent to +, and {0,1} is the same as ?. It’s better to use *, +, or ? when you can, simply because they’re shorter and easier to read.
         </section>
+
         <section class="main-section">
             <header></header>
         </section>
-        <section class="main-section">
-            <header></header>
-        </section>
+
     </main>
 </body>
 </html>
