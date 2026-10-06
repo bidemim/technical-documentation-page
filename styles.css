@@ -5,6 +5,8 @@ body {
 
 .nav-link {
     text-decoration: none;
+    padding: 10px;
+    font-size: 15px;
 }
 
 ul li {
