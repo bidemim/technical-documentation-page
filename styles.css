@@ -1,8 +1,13 @@
+body {
+    font-family: 'Open Sans', Arial, sans-serif;
+    line-height: 1.5;
+}
+
 .nav-link {
     text-decoration: none;
 }
 
 ul li {
     list-style-type: none;
-    
 }
+
